@@ -33,7 +33,7 @@
 #define BUTTON_MODE_KB 0x05
 
 // NGC analog trigger to digital click threshold
-#define GC_DIGITAL_TRIGGER_THRESHOLD 230
+#define GC_DIGITAL_TRIGGER_THRESHOLD 140
 
 // Global variables
 PIO pio;

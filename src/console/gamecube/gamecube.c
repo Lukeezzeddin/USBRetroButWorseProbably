@@ -289,8 +289,8 @@ void __not_in_flash_func(update_output)(void)
       gc_report.r_analog   = furthest_from_center(gc_report.r_analog, players[i].output_analog_r, 0);
 
       // L1 to 1% left analog
-      if ((byte & USBR_BUTTON_L1) == 0 && gc_report.l_analog < 1) {
-        gc_report.l_analog = 1;
+      if ((byte & USBR_BUTTON_L1) == 0) {
+        gc_report.l_analog = 43;
       }
     }
     else
