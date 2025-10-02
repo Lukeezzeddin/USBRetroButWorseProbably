@@ -120,48 +120,87 @@ If you run into any issues, then please submit a bug report on the issues tab of
 | A1          |               |             |             | Guide       |
 | A2          |               | Nuon        |             |             |
 
-How to get the uf2
-Make sure you have downloaded:
-Make
-Cmake
-Arm-GNU
-Git
-MSYS2 MinGW64
+## Building the UF2 Firmware
+
+### Prerequisites
+Make sure you have the following installed on your system:
+
+- [Make](https://www.gnu.org/software/make/)  
+- [CMake](https://cmake.org/download/)  
+- [ARM GNU Toolchain](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads)  
+- [Git](https://git-scm.com/downloads)  
+- [MSYS2 (MinGW64)](https://www.msys2.org/)  
 
 1. Open your MSYS2 MinGW64
 
-2. add paths to all your toolchains downloaded above (these are the paths for mine)
+2. Add paths to all your toolchains downloaded above (these are the paths for mine)
+
+```
 export PATH="C:\Program Files\Git\bin:$PATH"
+
 export PATH="C:\Users\lukee\toolchains\Arm\14.3 rel1\bin:$PATH"
+
 export PATH="C:\Users\lukee\toolchains\Cmake\bin:$PATH"
+
 export PATH="C:\Users\lukee\toolchains\Make\bin:$PATH"
+```
 
 3. Go to your git folder (make one if you don't have one)
-cd /c/users/lukee/git (in MSYS2 MinGW64, you start out in a weird spot, so run cd .. twice and then go to whatever your drive is called, mine is called c)
 
-4. clone and update submodules for both repos
+```
+cd /c/users/lukee/git 
+```
+in MSYS2 MinGW64, you start out in a weird spot, so run ```cd ..``` twice and then go to whatever your drive is called, mine is called c
+
+4. Clone and update submodules for both repos
+
+```
 git clone --recursive https://github.com/raspberrypi/pico-sdk.git
+
 export PICO_SDK_PATH=/c/users/lukee/git/pico-sdk
+
 cd pico-sdk
+
 git submodule init
+
 git submodule update
+
 cd lib
+
 cd tinyusb
+
 git checkout master
+
 cd ..
+
 cd ..
+
 cd ..
+
 git clone --recursive https://github.com/Lukeezzeddin/USBRetroButWorseProbably.git
+
 cd usbretrobutworseprobably
+
 git submodule init
+
 git submodule update
+```
 
 5. Make the file
+
+ ```
 cd src
+
 rm -rf build
+
 sh build_ada_kb2040.sh
+
+cd build
+
 cmake ..
+
 make -j$(nproc)
+```
 
 ## Discord Server
 
