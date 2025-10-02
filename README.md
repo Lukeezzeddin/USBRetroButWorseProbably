@@ -133,7 +133,7 @@ Make sure you have the following installed on your system:
 
 1. Open your MSYS2 MinGW64
 
-2. Add paths to all your toolchains downloaded above (these are the paths for mine)
+2. Add paths to all your toolchains downloaded above (these are the paths for mine, yours are probably different)
 
 ```
 export PATH="C:\Program Files\Git\bin:$PATH"
@@ -150,7 +150,7 @@ export PATH="C:\Users\lukee\toolchains\Make\bin:$PATH"
 ```
 cd /c/users/lukee/git 
 ```
-in MSYS2 MinGW64, you start out in a weird spot, so run ```cd ..``` twice and then go to whatever your drive is called, mine is called c
+in MSYS2 MinGW64, you start out in a weird spot, so if you don't know where you are, run ```cd ..``` twice and then go to whatever your drive is called, mine is called c
 
 4. Clone and update submodules for both repos
 
@@ -201,7 +201,13 @@ cmake ..
 
 make -j$(nproc)
 ```
-
+and if you only want to make 1 file, run
+```
+make usbretro_pce -j$(nproc)
+make usbretro_ngc -j$(nproc)
+make usbretro_nuon -j$(nproc)
+make usbretro_xb1 -j$(nproc)
+```
 ## Discord Server
 
 Join 👉 [discord.usbretro.com](https://discord.usbretro.com/)
