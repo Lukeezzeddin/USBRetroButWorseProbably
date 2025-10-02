@@ -109,10 +109,10 @@ If you run into any issues, then please submit a bug report on the issues tab of
 | B2          | I             | C-Down      | A           | B           |
 | B3          | IV (turbo II) | B           | Y           | X           |
 | B4          | III (turbo I) | C-Left      | X           | Y           |
-| L1          | VI            | L           | L analog 43 | LB          |
-| R1          | V             | R           | Z           | RB          |
-| L2          |               | C-Up        | L (switch Z)| LT          |
-| R2          |               | C-Right     | R (switch Z)| RT          |
+| L1          | VI            | L           | Z           | LB          |
+| R1          | V             | R           | Y           | RB          |
+| L2          |               | C-Up        | L Analog 43 | LT          |
+| R2          |               | C-Right     | L and R     | RT          |
 | S1          | Select        | Nuon        |             | Back        |
 | S2          | Run           | Start       | Start       | Start       |
 | L3          |               |             |             | LS          |
@@ -120,64 +120,33 @@ If you run into any issues, then please submit a bug report on the issues tab of
 | A1          |               |             |             | Guide       |
 | A2          |               | Nuon        |             |             |
 
-## Compiling
-### Setup
-#### 1.) Raspberry Pi Pico SDK
-First, clone the [pico-sdk](https://github.com/raspberrypi/pico-sdk) repo to your local dev environment. Then point the `PICO_SDK_PATH` environment variable to it.
-```cmd
-cd ~/git
+here's what I did to compile it hope this works lol
+
+export PATH="C:\Program Files\Git\bin:$PATH"
+export PATH="C:\Users\lukee\toolchains\Arm\14.3 rel1\bin:$PATH"
+export PATH="C:\Users\lukee\toolchains\Cmake\bin:$PATH"
+export PATH="C:\Users\lukee\toolchains\Make\bin:$PATH"
+cd /c/users/lukee/git
 git clone https://github.com/raspberrypi/pico-sdk.git
-
-cd ~/git/pico-sdk
+export PICO_SDK_PATH=/c/users/lukee/git/pico-sdk
+cd pico-sdk
 git submodule init
 git submodule update
-
-export PICO_SDK_PATH=~/git/pico-sdk
-```
-
-#### 2.) TinyUSB
-Then the TinyUSB library within pico-sdk should be on the latest `master` branch. Change to that directory and checkout `master` if not already on it.
-```cmd
-cd ~/git/pico-sdk/lib/tinyusb
+cd lib
+cd tinyusb
 git checkout master
-```
-
-#### 3.) Clone USBRetro and Submodules
-Once you have cloned this repo to your local environment. The external submodule dependencies must be initialized and updated.
-```cmd
-cd ~/git
-git clone https://github.com/RobertDaleSmith/usbretro.git
-
-cd ~/git/usbretro
+cd ..
+cd ..
+cd ..
+git clone https://github.com/Lukeezzeddin/USBRetroButWorseProbably.git
+cd usbretrobutworseprobably
 git submodule init
 git submodule update
-```
-
-#### 4.) RP2040 Board Setup
-Finally, run the specific microcontroller build script to create a `src/build` directory.
-```cmd
-cd ~/git/usbretro/src
+cd src
+rm -rf build
 sh build_ada_kb2040.sh
-```
-
-### Build Firmwares
-#### Build All
-To build all the various console specific firmwares:
-
-```cmd
-cd ~/git/usbretro/src/build
 cmake ..
-make
-```
-
-#### Build Individual
-If you ever want to build firmware for only a single output console, then you can use `make usbretro_[console]`.
-```cmd
-make usbretro_pce
-make usbretro_ngc
-make usbretro_nuon
-make usbretro_xb1
-```
+make -j$(nproc)
 
 ## Discord Server
 
