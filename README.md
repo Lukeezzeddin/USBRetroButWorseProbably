@@ -120,14 +120,27 @@ If you run into any issues, then please submit a bug report on the issues tab of
 | A1          |               |             |             | Guide       |
 | A2          |               | Nuon        |             |             |
 
-here's what I did to compile it hope this works lol
+How to get the uf2
+Make sure you have downloaded:
+Make
+Cmake
+Arm-GNU
+Git
+MSYS2 MinGW64
 
+1. Open your MSYS2 MinGW64
+
+2. add paths to all your toolchains downloaded above (these are the paths for mine)
 export PATH="C:\Program Files\Git\bin:$PATH"
 export PATH="C:\Users\lukee\toolchains\Arm\14.3 rel1\bin:$PATH"
 export PATH="C:\Users\lukee\toolchains\Cmake\bin:$PATH"
 export PATH="C:\Users\lukee\toolchains\Make\bin:$PATH"
-cd /c/users/lukee/git
-git clone https://github.com/raspberrypi/pico-sdk.git
+
+3. Go to your git folder (make one if you don't have one)
+cd /c/users/lukee/git (in MSYS2 MinGW64, you start out in a weird spot, so run cd .. twice and then go to whatever your drive is called, mine is called c)
+
+4. clone and update submodules for both repos
+git clone --recursive https://github.com/raspberrypi/pico-sdk.git
 export PICO_SDK_PATH=/c/users/lukee/git/pico-sdk
 cd pico-sdk
 git submodule init
@@ -138,10 +151,12 @@ git checkout master
 cd ..
 cd ..
 cd ..
-git clone https://github.com/Lukeezzeddin/USBRetroButWorseProbably.git
+git clone --recursive https://github.com/Lukeezzeddin/USBRetroButWorseProbably.git
 cd usbretrobutworseprobably
 git submodule init
 git submodule update
+
+5. Make the file
 cd src
 rm -rf build
 sh build_ada_kb2040.sh
