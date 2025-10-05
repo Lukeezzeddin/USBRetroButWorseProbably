@@ -157,8 +157,6 @@ in MSYS2 MinGW64, you start out in a weird spot, so if you don't know where you 
 ```
 git clone --recursive https://github.com/raspberrypi/pico-sdk.git
 
-export PICO_SDK_PATH=/c/users/lukee/git/pico-sdk
-
 cd pico-sdk
 
 git submodule init
@@ -185,7 +183,11 @@ git submodule init
 
 git submodule update
 ```
+5. Set pico-sdk path (again, yours are probably different)
 
+```
+export PICO_SDK_PATH=/c/users/lukee/git/pico-sdk
+```
 5. Make the file
 
  ```
