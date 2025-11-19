@@ -349,10 +349,10 @@ void __not_in_flash_func(post_globals)(
         players[player_index].output_buttons |= USBR_BUTTON_L2;
         players[player_index].output_buttons |= USBR_BUTTON_R2;
 
-        if (analog_r > GC_DIGITAL_TRIGGER_THRESHOLD)
+        if (analog_r > GC_DIGITAL_RTRIGGER_THRESHOLD)
             players[player_index].output_buttons &= ~USBR_BUTTON_R2;
 
-        if (analog_l > GC_DIGITAL_TRIGGER_THRESHOLD)
+        if (analog_l > GC_DIGITAL_LTRIGGER_THRESHOLD)
             players[player_index].output_buttons &= ~USBR_BUTTON_L2;
 
         update_output();
