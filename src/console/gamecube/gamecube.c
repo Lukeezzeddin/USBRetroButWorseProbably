@@ -20,7 +20,7 @@ uint8_t gc_rumble = 0;
 uint8_t gc_kb_led = 0;
 uint8_t gc_last_rumble = 0;
 uint8_t gc_kb_counter = 0;
-static const float LStick = 0.60f;   // scaling factor for left stick
+static const float LStick = 0.85f;   // scaling factor for left stick
 
 // *** FIX: helper to scale relative to centre
 static inline uint8_t scale_toward_center(uint8_t val, float scale, uint8_t center) {
